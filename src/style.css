@@ -8,10 +8,19 @@
 :root {
     --fallback-bg-color: hsl(180, 100%, 50%);
     --bg-image: url('./assets/background.jpg');
+    --bg-cover: hsla(0, 100%, 0%, .7);
+    --vertical-pos: 5%;
+    --horizontal-pos1: 0%;
+    --horizontal-pos2: 40%;
+    --quote-animation-time: .7s;
 }
 
 html {
     font-size: 16px;
+}
+
+body {
+    overflow: hidden;
 }
 
 #app {
