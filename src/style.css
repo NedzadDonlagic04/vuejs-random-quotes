@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+:root {
+    --fallback-bg-color: hsl(180, 100%, 50%);
+    --bg-image: url('./assets/background.jpg');
+}
+
 html {
     font-size: 16px;
 }
@@ -14,4 +19,6 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: var(--fallback-bg-color) var(--bg-image) no-repeat;
+    background-size: cover;
 }
