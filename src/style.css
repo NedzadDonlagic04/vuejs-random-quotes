@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 *,
 *::before,
 *::after {
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     box-sizing: border-box;
 }
@@ -9,10 +12,6 @@
     --fallback-bg-color: hsl(180, 100%, 50%);
     --bg-image: url('./assets/background.jpg');
     --bg-cover: hsla(0, 100%, 0%, .7);
-    --vertical-pos: 5%;
-    --horizontal-pos1: 0%;
-    --horizontal-pos2: 40%;
-    --quote-animation-time: .7s;
 }
 
 html {
@@ -20,14 +19,23 @@ html {
 }
 
 body {
+    min-height: 100vh;
+    min-width: 100vw;
+    background: var(--fallback-bg-color) var(--bg-image) no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     overflow: hidden;
 }
 
 #app {
-    min-height: 100vh;
+    width: 100vw;
+    background-color: var(--bg-cover);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--fallback-bg-color) var(--bg-image) no-repeat;
-    background-size: cover;
+    flex-direction: column;
+    position: relative;
 }
