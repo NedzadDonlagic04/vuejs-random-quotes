@@ -67,7 +67,8 @@ export default {
                 { quote: "Death can have me, when it earns me!", person: "Kratos" }
             ],
             quote: '',
-            person: ''
+            person: '',
+            passport: true
         };
     },
     mounted() {
@@ -77,20 +78,31 @@ export default {
     },
     methods: {
         getQuote() {
-            const index = Math.floor(Math.random() * this.quoteList.length);
-            const member = this.quoteList[index];
+            if(this.passport) {
+                const index = Math.floor(Math.random() * this.quoteList.length);
+                const member = this.quoteList[index];
 
-            this.quote = member.quote;
-            this.person = member.person;
+                this.quote = member.quote;
+                this.person = member.person;
+
+                this.$refs.quote.classList.add('active');
+                this.$refs.person.classList.add('active');
+            }
+            this.passport = false;
+        },
+        removeQuote() {
+            this.$refs.quote.classList.remove('active');
+            this.$refs.person.classList.remove('active');
+            this.passport = true;
         }
     }
 }
 </script>
 
 <template>
-    <p class="quote">" {{quote}} "</p>
-    <p class="person">- {{person}}</p>
-    <button class="quote-btn" @click="getQuote">Next Quote</button>
+    <p class="quote" ref="quote" @transitionend="getQuote">" {{quote}} "</p>
+    <p class="person" ref="person">- {{person}}</p>
+    <button class="quote-btn" @click="removeQuote">Next Quote</button>
 </template>
 
 <style scoped>
@@ -98,16 +110,28 @@ export default {
         color: white;
         text-align: start;
         font-size: 3rem;
-        transition: all .7s;
+        transition: all 1s;
+        opacity: 0;
     }
 
     .quote {
         padding: 3rem 3rem .5rem 3rem;
+        transform: translateX(-50rem);
     }
 
     .person {
         padding: .5rem 3rem 3rem 3rem;
+        transform: translateX(200%);
+    }
+
+    .quote.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .person.active {
         transform: translateX(70%);
+        opacity: 1;
     }
 
     .quote-btn {
